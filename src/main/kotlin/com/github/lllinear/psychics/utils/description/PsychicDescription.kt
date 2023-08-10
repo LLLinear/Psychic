@@ -26,11 +26,11 @@ class PsychicDescription(var psychic: Psychic) {
         addDescriptionLine("&c&l최대 체력 &f: ${psychic.health}")
 
         if (psychic.maxMana > 0) {
-            addDescriptionLine("&b&l마나 &f: ${psychic.maxMana}")
+            addDescriptionLine("&b&l최대 마나 &f: ${psychic.maxMana}")
         }
 
         if (psychic.maxMana > 0) {
-            addDescriptionLine("&b&l마나 회복 &f: ${psychic.manaRegen}/s")
+            addDescriptionLine("&b&l마나 회복량 &f: ${psychic.manaRegen}/s")
         }
 
         return list

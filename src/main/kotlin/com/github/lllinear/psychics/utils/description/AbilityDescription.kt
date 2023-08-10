@@ -26,7 +26,7 @@ class AbilityDescription(val ability: Ability) {
         list.add("")
 
         if (ability.castingTime > 0) {
-            addDescriptionLine("&9&l캐스팅 &f: ${ability.castingTime.toDouble() / 20}s")
+            addDescriptionLine("&9&l캐스팅 타임 &f: ${ability.castingTime.toDouble() / 20}s")
         }
 
         if (ability.coolDown > 0) {
@@ -34,11 +34,11 @@ class AbilityDescription(val ability: Ability) {
         }
 
         if (ability.mana > 0) {
-            addDescriptionLine("&b&l마나 &f: ${ability.mana}")
+            addDescriptionLine("&b&l마나 소모&f: ${ability.mana}")
         }
 
         if (ability.range > 0) {
-            addDescriptionLine("&6&l사거리 &f: ${ability.range}m")
+            addDescriptionLine("&6&l능력 범위 &f: ${ability.range}m")
         }
 
         if (ability.duration > 0) {
