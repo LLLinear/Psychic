@@ -4,6 +4,9 @@ import com.github.lllinear.psychics.events.EventListener
 import com.github.lllinear.psychics.psychics.None
 import com.github.lllinear.psychics.psychics.zombie.Zombie
 import com.github.lllinear.psychics.utils.PsychicManager
+import com.github.lllinear.psychics.utils.bar.CastingBar
+import com.github.lllinear.psychics.utils.bar.ManaBar
+import com.github.lllinear.psychics.utils.bar.ManaRegenTask
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -20,10 +23,6 @@ class Psychics: JavaPlugin() {
         val prefix = "[ &dPsychics &f] "
 
         fun sendMessage(player: Player, message: String): Boolean {
-            if (player == null) {
-                return false
-            }
-
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + message))
             return true
         }
@@ -46,5 +45,13 @@ class Psychics: JavaPlugin() {
         getCommand("psychics")!!.setExecutor(PsychicCommandExecutor())
 
         server.pluginManager.registerEvents(EventListener(), this)
+
+        val manaRegenTask = ManaRegenTask()
+        manaRegenTask.runTaskTimer(this, 0L, 20L)
+    }
+
+    override fun onDisable() {
+        ManaBar.hideAll()
+        CastingBar.hideAll()
     }
 }

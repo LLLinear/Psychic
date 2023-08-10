@@ -34,15 +34,30 @@ class CastingBar(private val name: String) {
             castingTask.runTaskTimer(Psychics.getPlugin(), 0L, 1L)
         }
 
-        fun hide(player: Player, ability: Ability) {
+        fun hide(player: Player, abilityName: String) {
             val name = player.name
-            val abilityName = ability.name
             if (castingBarMap.containsKey(name) && castingBarMap[name]!!.containsKey(abilityName)) {
                 castingBarMap[name]!![abilityName]!!.removePlayer(player)
                 castingBarMap[name]!!.remove(abilityName)
 
                 if (castingBarMap[name]!!.size == 0) {
                     castingBarMap.remove(name)
+                }
+            }
+        }
+
+        fun hide(player: Player, ability: Ability) {
+            hide(player, ability.name)
+        }
+
+        fun hideAll() {
+            for (name in castingBarMap.keys) {
+                if (Bukkit.getPlayer(name) == null) {
+                    continue
+                }
+
+                for (abilityName in castingBarMap[name]!!.keys) {
+                    hide(Bukkit.getPlayer(name)!!, abilityName)
                 }
             }
         }

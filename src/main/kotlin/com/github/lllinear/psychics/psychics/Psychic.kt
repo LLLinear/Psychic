@@ -21,15 +21,19 @@ abstract class Psychic: Cloneable {
 
     abstract val manaRegen: Int
 
-    abstract val abilityList: List<Ability>
+    abstract var abilityList: List<Ability>
 
     lateinit var player: Player
 
     public override fun clone(): Psychic {
         val psychic = super.clone() as Psychic
+        val newAbilityList = ArrayList<Ability>()
         for (ability in psychic.abilityList) {
-            ability.psychic = psychic
+            val newAbility = ability.clone()
+            newAbility.psychic = psychic
+            newAbilityList.add(newAbility)
         }
+        psychic.abilityList = newAbilityList
         return psychic
     }
 }

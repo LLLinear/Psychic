@@ -13,5 +13,5 @@ class Zombie: Psychic() {
     override val health = 40.0
     override val maxMana = 100
     override val manaRegen = 5
-    override val abilityList: List<Ability> = listOf(HungryGround(this))
+    override var abilityList: List<Ability> = listOf(HungryGround(this))
 }

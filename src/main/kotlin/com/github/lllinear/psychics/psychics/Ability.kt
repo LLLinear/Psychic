@@ -1,13 +1,15 @@
 package com.github.lllinear.psychics.psychics
 
 import com.github.lllinear.psychics.utils.AbilityType
+import com.github.lllinear.psychics.utils.PsychicManager
 import com.github.lllinear.psychics.utils.bar.CastingBar
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
-abstract class Ability(var psychic: Psychic) {
+abstract class Ability(var psychic: Psychic): Cloneable {
     abstract val name: String
 
     abstract val abilityType: AbilityType
@@ -55,5 +57,9 @@ abstract class Ability(var psychic: Psychic) {
         } else {
             onActivate(event)
         }
+    }
+
+    public override fun clone(): Ability {
+        return super.clone() as Ability
     }
 }

@@ -26,11 +26,11 @@ class AbilityDescription(val ability: Ability) {
         list.add("")
 
         if (ability.castingTime > 0) {
-            addDescriptionLine("&9&l캐스팅 &f: ${ability.castingTime!!.toDouble() / 20}s")
+            addDescriptionLine("&9&l캐스팅 &f: ${ability.castingTime.toDouble() / 20}s")
         }
 
         if (ability.coolDown > 0) {
-            addDescriptionLine("&8&l쿨다운 &f: ${ability.coolDown!!.toDouble() / 20}s")
+            addDescriptionLine("&8&l쿨다운 &f: ${ability.coolDown.toDouble() / 20}s")
         }
 
         if (ability.mana > 0) {
@@ -42,7 +42,7 @@ class AbilityDescription(val ability: Ability) {
         }
 
         if (ability.duration > 0) {
-            addDescriptionLine("&d&l지속 시간 &f: ${ability.duration!!.toDouble() / 20}m")
+            addDescriptionLine("&d&l지속 시간 &f: ${ability.duration.toDouble() / 20}s")
         }
 
         if (ability.damage > 0) {

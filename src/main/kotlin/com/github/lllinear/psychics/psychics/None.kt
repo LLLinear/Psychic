@@ -10,5 +10,5 @@ class None : Psychic() {
     override val health = 20.0
     override val maxMana = 0
     override val manaRegen = 0
-    override val abilityList: List<Ability> = ArrayList()
+    override var abilityList: List<Ability> = ArrayList()
 }

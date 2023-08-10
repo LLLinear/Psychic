@@ -6,6 +6,7 @@ import com.github.lllinear.psychics.psychics.mana
 import com.github.lllinear.psychics.psychics.psychic
 import com.github.lllinear.psychics.utils.bar.ManaBar
 import com.github.lllinear.psychics.utils.PsychicManager
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
