@@ -2,6 +2,7 @@ package com.github.lllinear.psychics.psychics.zombie
 
 import com.github.lllinear.psychics.psychics.Ability
 import com.github.lllinear.psychics.psychics.Psychic
+import com.github.lllinear.psychics.psychics.zombie.abilities.HungryGround
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
@@ -12,5 +13,5 @@ class Zombie: Psychic() {
     override val health = 40.0
     override val maxMana = 100
     override val manaRegen = 5
-    override val abilityList: List<Ability> = ArrayList()
+    override val abilityList: List<Ability> = listOf(HungryGround(this))
 }

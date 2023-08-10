@@ -1,6 +1,5 @@
 package com.github.lllinear.psychics.psychics
 
-import com.github.lllinear.psychics.utils.PsychicDescription
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 

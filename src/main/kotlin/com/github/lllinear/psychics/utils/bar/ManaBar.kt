@@ -1,11 +1,9 @@
-package com.github.lllinear.psychics.utils
+package com.github.lllinear.psychics.utils.bar
 
 import com.github.lllinear.psychics.psychics.mana
 import com.github.lllinear.psychics.psychics.maxMana
-import com.github.lllinear.psychics.psychics.psychic
 import org.bukkit.Bukkit
 import org.bukkit.boss.BarColor
-import org.bukkit.boss.BarFlag
 import org.bukkit.boss.BarStyle
 import org.bukkit.boss.BossBar
 import org.bukkit.entity.Player
@@ -25,6 +23,7 @@ class ManaBar {
         fun update(player: Player) {
             val name = player.name
             if (manaBarMap.containsKey(name)) {
+                manaBarMap[name]!!.setTitle("${player.mana} / ${player.maxMana}")
                 manaBarMap[name]!!.progress = player.mana.toDouble() / player.maxMana
             }
         }

@@ -76,7 +76,6 @@ class PsychicCommandExecutor: CommandExecutor, TabExecutor {
             val player = Bukkit.getPlayer(args[1])!!
             val psychic = PsychicManager.getPsychic(args[2])
             player.psychic = psychic
-            psychic.player = player
             Psychics.sendMessage(player, "Set ${player.name}'s psychic to ${psychic.name}")
             return true
         } else if (args[0] == "info") {

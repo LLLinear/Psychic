@@ -1,4 +1,4 @@
-package com.github.lllinear.psychics.utils
+package com.github.lllinear.psychics.utils.description
 
 import com.github.lllinear.psychics.psychics.Psychic
 import org.bukkit.ChatColor

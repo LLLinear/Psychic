@@ -1,8 +1,8 @@
 package com.github.lllinear.psychics.utils
 
-import com.github.lllinear.psychics.Psychics
 import com.github.lllinear.psychics.psychics.None
 import com.github.lllinear.psychics.psychics.Psychic
+import com.github.lllinear.psychics.utils.bar.ManaBar
 import org.bukkit.entity.Player
 
 class PsychicManager {
@@ -62,6 +62,8 @@ class PsychicManager {
 
         fun setMana(player: Player, mana: Int) {
             manaMap[player.name] = mana
+
+            ManaBar.update(player)
         }
     }
 }

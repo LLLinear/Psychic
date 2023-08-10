@@ -26,13 +26,19 @@ abstract class Psychic: Cloneable {
     lateinit var player: Player
 
     public override fun clone(): Psychic {
-        return super.clone() as Psychic
+        val psychic = super.clone() as Psychic
+        for (ability in psychic.abilityList) {
+            ability.psychic = psychic
+        }
+        return psychic
     }
 }
 
 var Player.psychic: Psychic
     get() { return PsychicManager.getPsychic(this) }
     set(value) {
+        value.player = this
+
         PsychicManager.setPsychic(this, value)
 
         val psychicSetEvent = PsychicSetEvent(this, value)

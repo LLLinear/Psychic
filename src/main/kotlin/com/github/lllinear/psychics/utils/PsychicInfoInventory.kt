@@ -2,6 +2,8 @@ package com.github.lllinear.psychics.utils
 
 import com.github.lllinear.psychics.Psychics
 import com.github.lllinear.psychics.psychics.Psychic
+import com.github.lllinear.psychics.utils.description.AbilityDescription
+import com.github.lllinear.psychics.utils.description.PsychicDescription
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -63,7 +65,7 @@ class PsychicInfoInventory(private val player: Player, private val psychic: Psyc
             val item = ability.icon.clone()
             val itemMeta = item.itemMeta!!
             itemMeta.setDisplayName(ability.name)
-            itemMeta.lore = ability.description
+            itemMeta.lore = AbilityDescription(ability).toDescription()
             item.itemMeta = itemMeta
 
             inv.setItem(i + 1, item)

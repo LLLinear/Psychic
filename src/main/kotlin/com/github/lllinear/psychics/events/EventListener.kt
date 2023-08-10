@@ -1,12 +1,15 @@
 package com.github.lllinear.psychics.events
 
 import com.github.lllinear.psychics.Psychics
+import com.github.lllinear.psychics.psychics.None
 import com.github.lllinear.psychics.psychics.mana
-import com.github.lllinear.psychics.psychics.maxMana
-import com.github.lllinear.psychics.utils.ManaBar
-import org.bukkit.Bukkit
+import com.github.lllinear.psychics.psychics.psychic
+import com.github.lllinear.psychics.utils.bar.ManaBar
+import com.github.lllinear.psychics.utils.PsychicManager
+import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerInteractEvent
 
 class EventListener: Listener {
     @EventHandler
@@ -26,5 +29,21 @@ class EventListener: Listener {
         }
 
         Psychics.sendMessage(player, "Your psychic is now ${psychic.name}.")
+    }
+
+    @EventHandler
+    fun onInteract(event: PlayerInteractEvent) {
+        val player = event.player
+        if (player.psychic.name == None().name) {
+            return
+        }
+
+        if (event.item == null || event.item!!.type == Material.AIR) {
+            return
+        }
+
+        for (ability in PsychicManager.getPsychic(player).abilityList) {
+            ability.onTrigger(event)
+        }
     }
 }
