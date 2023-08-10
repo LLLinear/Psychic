@@ -39,11 +39,7 @@ class PsychicInfoInventory(private val player: Player, private val psychic: Psyc
             val item = psychic.icon.clone()
             val itemMeta = item.itemMeta!!
             itemMeta.setDisplayName(psychic.name)
-            val description = ArrayList<String>()
-            for (line in psychic.description) {
-                description.add(ChatColor.translateAlternateColorCodes('&', "&f$line"))
-            }
-            itemMeta.lore = description
+            itemMeta.lore = PsychicDescription(psychic).toDescription()
             item.itemMeta = itemMeta
             inv.setItem(0, item)
         } else {

@@ -3,6 +3,7 @@ package com.github.lllinear.psychics.utils
 import com.github.lllinear.psychics.Psychics
 import com.github.lllinear.psychics.psychics.None
 import com.github.lllinear.psychics.psychics.Psychic
+import org.bukkit.entity.Player
 
 class PsychicManager {
     companion object {
@@ -31,6 +32,36 @@ class PsychicManager {
             }
 
             return None()
+        }
+
+        private val psychicMap = HashMap<String, Psychic>()
+
+        fun getPsychic(player: Player): Psychic {
+            val name = player.name
+            if (!psychicMap.containsKey(name)) {
+                return None()
+            }
+
+            return psychicMap[name]!!
+        }
+
+        fun setPsychic(player: Player, psychic: Psychic) {
+            psychicMap[player.name] = psychic
+        }
+
+        private val manaMap = HashMap<String, Int>()
+
+        fun getMana(player: Player): Int {
+            val name = player.name
+            if (!manaMap.containsKey(name)) {
+                return 0
+            }
+
+            return manaMap[name]!!
+        }
+
+        fun setMana(player: Player, mana: Int) {
+            manaMap[player.name] = mana
         }
     }
 }

@@ -5,12 +5,12 @@ import org.bukkit.ChatColor
 class AbilityDescription(val type: AbilityType) {
     var description: List<String> = ArrayList()
 
-    var castTime: Float? = null
+    var castTime: Double? = null
     var coolDown: Int? = null
     var mana: Int? = null
-    var range: Float? = null
-    var damage: Float? = null
-    var healing: Float? = null
+    var range: Double? = null
+    var damage: Double? = null
+    var healing: Double? = null
 
     val list = ArrayList<String>()
 
@@ -32,11 +32,11 @@ class AbilityDescription(val type: AbilityType) {
         list.add("")
 
         if (castTime != null) {
-            addDescriptionLine("&9&l캐스팅 &f: ${castTime}초")
+            addDescriptionLine("&9&l캐스팅 &f: ${castTime}s")
         }
 
         if (coolDown != null) {
-            addDescriptionLine("&8&l쿨다운 &f: ${coolDown!!.toFloat() / 20}초")
+            addDescriptionLine("&8&l쿨다운 &f: ${coolDown!!.toDouble() / 20}s")
         }
 
         if (mana != null) {
