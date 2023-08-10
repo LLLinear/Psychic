@@ -1,11 +1,14 @@
 package com.github.lllinear.psychics
 
+import com.github.lllinear.psychics.psychics.None
 import com.github.lllinear.psychics.psychics.Psychic
 import com.github.lllinear.psychics.utils.AbilityDescription
 import com.github.lllinear.psychics.utils.AbilityType
+import com.github.lllinear.psychics.utils.PsychicManager
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -15,6 +18,12 @@ import org.bukkit.plugin.java.JavaPlugin
 
 class Psychics: JavaPlugin(), Listener {
     companion object {
+        private lateinit var plugin: Psychics
+
+        fun getPlugin(): Psychics {
+            return plugin
+        }
+
         val prefix = "[ &dPsychics &f] "
 
         fun sendMessage(player: Player, message: String): Boolean {
@@ -31,8 +40,16 @@ class Psychics: JavaPlugin(), Listener {
         }
     }
 
+    override fun onLoad() {
+        PsychicManager.registerPsychic(None())
+    }
+
     override fun onEnable() {
+        plugin = this
+
         logger.info("Plugin Enabled.")
+
+        getCommand("psychics")!!.setExecutor(PsychicCommandExecutor())
 
         server.pluginManager.registerEvents(this, this)
     }
