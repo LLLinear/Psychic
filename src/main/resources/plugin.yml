@@ -1,18 +1,18 @@
-name: Psychic
+name: Psychics
 author: LLLinear
 version: 1.0.0
 api-version: 1.20
-main: com.github.lllinear.psychic.Psychic
+main: com.github.lllinear.psychics.Psychics
 
 permissions:
   lllinear.command:
     children:
-      psychic:
+      psychics:
         default: op
         description: permission to use job command.
 
 commands:
-  psychic:
-    permission: lllinear.command.psychic
-    description: Psychic command.
+  psychics:
+    permission: lllinear.command.psychics
+    description: Psychics command.
     permission-message: You don't have enough permission to use this command.
