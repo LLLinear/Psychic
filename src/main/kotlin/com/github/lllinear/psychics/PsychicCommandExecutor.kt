@@ -35,7 +35,7 @@ class PsychicCommandExecutor: CommandExecutor, TabExecutor {
         } else if ((args[0] == "set" || args[0] == "info") && args.size == 3) {
             val psychicList = ArrayList<String>()
             for (psychic in PsychicManager.getPsychicList()) {
-                if (!psychic.name.contains(args[2])) {
+                if (!psychic::class.simpleName!!.lowercase().contains(args[2])) {
                     continue
                 }
                 psychicList.add(psychic::class.simpleName!!.lowercase())
